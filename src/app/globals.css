@@ -1,26 +1,56 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ── Three brand colors ─────────────────────────────────────── */
+  --color-navy:    #0f3460;   /* deep sapphire blue — headings, dark sections, buttons */
+  --color-navy-light: #1a3d6e; /* hover / lighter blue states */
+  --color-crimson: #8b1515;   /* deep crimson — CTAs, accents, gradient end */
+  --color-orange:  #f2be18;   /* gold — icons, tags, accent stripes */
+  --color-orange-dark: #c99e0f;
+
+  /* ── Supporting neutrals ────────────────────────────────────── */
+  --color-steel:     #334155;  /* body text only — never headings */
+  --color-off-white: #f5f2ee;  /* warm cream — light section backgrounds */
+
+  /* ── Typography ─────────────────────────────────────────────── */
+  --font-heading: var(--font-montserrat);
+  --font-body:    var(--font-inter);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #334155;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:where(a, button, input, textarea, select) {
+  transition:
+    color 0.22s ease,
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+}
+
+/* Mobile nav service item — gold tint on hover */
+.nav-service-item {
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.nav-service-item:hover {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(242, 190, 24, 0.09) 60%,
+    rgba(139, 21, 21, 0.06) 100%
+  );
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), Arial, Helvetica, sans-serif;
 }
