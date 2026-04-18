@@ -262,8 +262,7 @@ export default function ProjectsPage() {
                   className="absolute left-0 top-0 bottom-0 w-1 group-hover:w-1.5 transition-all duration-300 rounded-l-2xl"
                   style={{ background: c.accent }}
                 />
-                <div className="p-7 pl-8">
-                  {/* Clean count — no zero-padding format */}
+                <div className="p-6 text-center sm:text-left sm:p-7 sm:pl-8">
                   <div
                     className="font-heading font-black text-4xl mb-1 leading-none"
                     style={{ color: c.accent }}

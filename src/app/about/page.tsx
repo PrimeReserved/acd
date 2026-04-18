@@ -240,7 +240,7 @@ export default function AboutPage() {
                 Sectors We Serve
               </span>
               <h2 className="font-heading font-bold text-4xl text-white mt-3 mb-6">
-                Industries We Operate In
+                Industries We Operate{'\u00A0'}In
               </h2>
               <p className="text-white/90 leading-relaxed mb-8">
                 From the swamps of the Niger Delta to industrial plants across

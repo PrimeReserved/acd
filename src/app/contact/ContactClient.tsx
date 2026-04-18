@@ -134,7 +134,7 @@ export default function ContactClient() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 rounded-3xl overflow-hidden shadow-[0_24px_80px_-12px_rgba(0,0,0,0.18)]">
 
             <div
-              className="lg:col-span-2 p-8 sm:p-10 lg:p-12 flex flex-col justify-between relative"
+              className="lg:col-span-2 order-2 lg:order-1 p-8 sm:p-10 lg:p-12 flex flex-col justify-between relative"
               style={{ background: 'linear-gradient(135deg, #0f3460 0%, #8b1515 100%)' }}
             >
               <div
@@ -230,7 +230,7 @@ export default function ContactClient() {
               </div>
             </div>
 
-            <div ref={formRef} className="lg:col-span-3 bg-white p-8 sm:p-10 lg:p-12">
+            <div ref={formRef} className="lg:col-span-3 order-1 lg:order-2 bg-white p-8 sm:p-10 lg:p-12">
               {status !== 'success' && (
                 <div className="mb-7">
                   <h3 className="font-heading font-black text-2xl text-navy mb-1.5">Send Us a Message</h3>
