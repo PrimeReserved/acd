@@ -2,18 +2,18 @@ import { Resend } from 'resend';
 import { NextRequest } from 'next/server';
 
 export async function POST(req: NextRequest) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  const { name, company, email, phone, service, message } = await req.json();
-
-  // Basic validation
-  if (!name?.trim() || !email?.trim() || !message?.trim()) {
-    return Response.json({ error: 'Name, email, and message are required.' }, { status: 400 });
-  }
-
-  const from = process.env.RESEND_FROM!;
-  const to = process.env.RESEND_TO!;
-
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const { name, company, email, phone, service, message } = await req.json();
+
+    // Basic validation
+    if (!name?.trim() || !email?.trim() || !message?.trim()) {
+      return Response.json({ error: 'Name, email, and message are required.' }, { status: 400 });
+    }
+
+    const from = process.env.RESEND_FROM!;
+    const to = process.env.RESEND_TO!;
+
     await resend.emails.send({
       from,
       to,
@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
 
     return Response.json({ success: true });
   } catch (err) {
-    console.error('[contact] Resend error:', err);
+    console.error('[contact] Error:', err);
     return Response.json({ error: 'Failed to send message. Please try again.' }, { status: 500 });
   }
 }
