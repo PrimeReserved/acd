@@ -146,7 +146,7 @@ export default function ContactPage() {
         title="Contact Us"
         subtitle="Our team is ready to discuss your project requirements and provide tailored EPIC service solutions."
         image={pageHeroImages.contact}
-        objectPosition="center bottom"
+        objectPosition="top"
       />
 
       {/* ─── MAIN CONTACT SECTION ─────────────────────────────────── */}

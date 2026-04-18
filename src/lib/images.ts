@@ -57,7 +57,7 @@ export const pageHeroImages = {
     'https://res.cloudinary.com/dfwty72r9/image/upload/v1776527358/photo-1678984239888-4e86693005ec_qzocxp.avif',
   /** Contact page hero — modern office / professional meeting */
   contact:
-    'https://res.cloudinary.com/dfwty72r9/image/upload/q_auto/f_auto/v1776527919/photo-1649294010513-6c2a5b0c35fc_ctfnwu.avif',
+    'https://res.cloudinary.com/dfwty72r9/image/upload/q_auto/f_auto/v1776528362/photo-1548383487-e3e0abce4c86_yfogzc.avif',
   /** Gallery page hero — heavy construction operations */
   gallery:
     'https://res.cloudinary.com/dfwty72r9/image/upload/v1776505199/img153_xrcjrv.jpg',
