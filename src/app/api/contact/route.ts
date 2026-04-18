@@ -72,9 +72,10 @@ export async function POST(req: NextRequest) {
     });
 
     return Response.json({ success: true });
-  } catch (err) {
-    console.error('[contact] Error:', err);
-    return Response.json({ error: 'Failed to send message. Please try again.' }, { status: 500 });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error('[contact] Error:', message);
+    return Response.json({ error: message }, { status: 500 });
   }
 }
 
