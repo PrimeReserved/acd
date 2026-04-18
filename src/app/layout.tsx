@@ -83,7 +83,7 @@ const organizationSchema = {
       url: siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: "https://res.cloudinary.com/dfwty72r9/image/upload/v1776525836/alphacapitald-logo-main-wt_j2pg5r.png",
+        url: "https://res.cloudinary.com/dfwty72r9/image/upload/v1775578889/alphacapitald-logo-main_ao61hj.png",
         width: 200,
         height: 200,
       },

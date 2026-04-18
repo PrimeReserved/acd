@@ -140,7 +140,7 @@ export default function ServicesLayout({ services, children }: ServicesLayoutPro
       <main className="flex-1 min-w-0">
 
         {/* Mobile services nav */}
-        <div className="lg:hidden sticky top-16 z-20 border-b border-white/10" style={{ background: '#0f3460' }}>
+        <div className="lg:hidden sticky top-14 z-20 border-b border-white/10" style={{ background: '#0f3460' }}>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="w-full flex items-center justify-between px-5 py-3.5"
