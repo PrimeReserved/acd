@@ -1,5 +1,23 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { MapPin, ArrowRight, Flame, Layers, Waves } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Our Projects',
+  description:
+    'Alpha Capital D\'s proven project portfolio: 20+ completed EPIC projects for SPDC, Saipem, Walter Smith & NAOC. Pipeline construction, tank erection, flare systems and canalization across Nigeria.',
+  keywords:
+    'oil gas projects Nigeria, pipeline construction SPDC, NAOC contractor, Saipem subcontractor Nigeria, tank construction Rivers State, flare system Niger Delta',
+  alternates: {
+    canonical: 'https://alphacapitald.com/projects',
+  },
+  openGraph: {
+    title: 'Our Projects | Alpha Capital D',
+    description:
+      '20+ completed EPIC projects for SPDC, Saipem, Walter Smith & NAOC — pipeline, tanks, flare systems and canalization across Nigeria.',
+    url: 'https://alphacapitald.com/projects',
+  },
+};
 import PageHero from '@/components/PageHero';
 import { pageHeroImages } from '@/lib/images';
 

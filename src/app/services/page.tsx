@@ -1,5 +1,4 @@
-'use client';
-
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -17,9 +16,29 @@ import {
   ArrowRight,
   Phone,
 } from "lucide-react";
+
+// Icons are referenced here only for the article cards rendered server-side.
+// The sidebar (ServicesLayout) resolves its own icons by service ID internally.
 import PageHero from "@/components/PageHero";
 import ServicesLayout from "@/components/ServicesLayout";
 import { pageHeroImages, serviceImages } from "@/lib/images";
+
+export const metadata: Metadata = {
+  title: "Our Services",
+  description:
+    "Full-scope EPIC services from Alpha Capital D: Mechanical & Valve Services, NDT Inspection, Pipeline Construction, Flare Systems, Tank Construction, Electrical Engineering, Equipment Leasing and Chemical Supply. Nigeria's energy sector specialist.",
+  keywords:
+    "valve services Nigeria, NDT inspection Nigeria, pipeline construction, flare system installation Niger Delta, tank construction Nigeria, electrical engineering oil gas, equipment leasing Nigeria, chemical supply upstream",
+  alternates: {
+    canonical: "https://alphacapitald.com/services",
+  },
+  openGraph: {
+    title: "Our Services | Alpha Capital D",
+    description:
+      "Full-scope EPIC services: Mechanical & Valve, NDT, Pipeline, Flare Systems, Tank Construction, Electrical, Equipment Leasing and more — Alpha Capital D Nigeria.",
+    url: "https://alphacapitald.com/services",
+  },
+};
 
 const services = [
   {
@@ -231,8 +250,7 @@ const services = [
   },
 ];
 
-// Only pass serialisable data to the client layout component
-const serviceNavItems = services.map(({ id, title, icon }) => ({ id, title, icon }));
+const serviceNavItems = services.map(({ id, title }) => ({ id, title }));
 
 export default function ServicesPage() {
   return (
@@ -246,7 +264,6 @@ export default function ServicesPage() {
       />
 
       <ServicesLayout services={serviceNavItems}>
-        {/* ── Service Cards ─────────────────────────────────────────── */}
         <section className="py-10 sm:py-14 px-4 sm:px-8 lg:px-10 space-y-8 sm:space-y-10">
           {services.map((s, i) => {
             const isOdd = i % 2 === 0;
@@ -255,17 +272,13 @@ export default function ServicesPage() {
               <article
                 key={s.id}
                 id={s.id}
-               
-               
                 className="scroll-mt-28 group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-orange/20 hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.13)] transition-all duration-500 flex flex-col lg:flex-row"
               >
-                {/* ── Image Panel — clean framed, no overlay ── */}
                 <div
                   className={`w-full lg:w-[42%] shrink-0 flex items-stretch bg-off-white ${
                     isOdd ? 'lg:order-1' : 'lg:order-2'
                   }`}
                 >
-                  {/* Framed image — contained with padding + rounding */}
                   <div className="relative w-full h-64 lg:h-auto m-5 rounded-2xl overflow-hidden shadow-[0_8px_32px_-8px_rgba(0,0,0,0.22)]">
                     <Image
                       src={s.image}
@@ -273,7 +286,6 @@ export default function ServicesPage() {
                       fill
                       className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                     />
-                    {/* Category badge — sits cleanly on the image */}
                     <div className="absolute top-4 left-4">
                       <div
                         className="flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-[10px] font-bold tracking-[0.18em] uppercase backdrop-blur-sm"
@@ -283,52 +295,33 @@ export default function ServicesPage() {
                         {s.category}
                       </div>
                     </div>
-                    {/* Orange accent bar at bottom of image */}
                     <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-orange via-orange to-transparent opacity-80" />
                   </div>
                 </div>
 
-                {/* ── Content Panel ────────────────────── */}
                 <div
                   className={`flex-1 p-8 lg:p-10 flex flex-col justify-center ${
                     isOdd ? 'lg:order-2' : 'lg:order-1'
                   }`}
                 >
-                  {/* Category tag */}
                   <span className="text-orange font-bold text-[10px] tracking-[0.22em] uppercase mb-3 block">
                     {s.category}
                   </span>
-
-                  {/* Title */}
                   <h2 className="font-heading font-black text-2xl lg:text-3xl text-navy leading-tight mb-4">
                     {s.title}
                   </h2>
-
-                  {/* Gold separator */}
                   <div className="w-12 h-[3px] bg-orange rounded-full mb-5" />
-
-                  {/* Description */}
                   <p className="text-[15px] text-slate-600 leading-relaxed mb-7">
                     {s.description}
                   </p>
-
-                  {/* Items — single column */}
                   <ul className="space-y-2.5 mb-8">
                     {s.items.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2.5 text-sm text-slate-600"
-                      >
-                        <CheckCircle
-                          size={14}
-                          className="text-orange shrink-0 mt-0.5"
-                        />
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-slate-600">
+                        <CheckCircle size={14} className="text-orange shrink-0 mt-0.5" />
                         {item}
                       </li>
                     ))}
                   </ul>
-
-                  {/* CTA */}
                   <div>
                     <Link
                       href={`/contact?service=${s.id}`}
@@ -343,7 +336,6 @@ export default function ServicesPage() {
           })}
         </section>
 
-        {/* ── CTA ───────────────────────────────────────────────────── */}
         <section className="mx-4 sm:mx-8 lg:mx-10 mb-16 rounded-2xl py-16 px-8 text-center bg-white border border-gray-100">
           <span className="text-orange font-bold text-[10px] tracking-[0.22em] uppercase mb-3 block">
             Let&apos;s Work Together

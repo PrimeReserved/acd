@@ -1,12 +1,31 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, ChevronDown, AlignLeft } from 'lucide-react';
+import {
+  Wrench, Eye, HardHat, Zap, Activity, Truck,
+  Flame, Layers, Waves, FlaskConical,
+  ChevronLeft, ChevronRight, ChevronDown, AlignLeft,
+} from 'lucide-react';
+
+// Icon lookup lives in the client component so server components
+// never need to pass function references across the boundary.
+const SERVICE_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+  mechanical:             Wrench,
+  ndt:                    Eye,
+  construction:           HardHat,
+  electrical:             Zap,
+  'mechanical-engineering': Activity,
+  flare:                  Flame,
+  tanks:                  Layers,
+  pipeline:               Activity,
+  equipment:              Truck,
+  canalization:           Waves,
+  chemicals:              FlaskConical,
+};
 
 interface ServiceItem {
   id: string;
   title: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
 }
 
 interface ServicesLayoutProps {
@@ -57,7 +76,6 @@ export default function ServicesLayout({ services, children }: ServicesLayoutPro
         }`}
         style={{ background: '#0f3460' }}
       >
-        {/* Sidebar header row */}
         <div
           className={`flex items-center border-b border-white/8 shrink-0 py-4 ${
             collapsed ? 'justify-center px-2' : 'justify-between px-4'
@@ -81,10 +99,9 @@ export default function ServicesLayout({ services, children }: ServicesLayoutPro
           </button>
         </div>
 
-        {/* Nav items */}
         <nav className="flex-1 overflow-y-auto py-2 scrollbar-hide">
           {services.map((s) => {
-            const Icon = s.icon;
+            const Icon = SERVICE_ICONS[s.id] ?? Activity;
             const isActive = activeId === s.id;
             return (
               <button
@@ -122,7 +139,7 @@ export default function ServicesLayout({ services, children }: ServicesLayoutPro
       {/* ── Main content ──────────────────────────────────────────── */}
       <main className="flex-1 min-w-0">
 
-        {/* Mobile services nav — sticky bar with collapsible list */}
+        {/* Mobile services nav */}
         <div className="lg:hidden sticky top-16 z-20 border-b border-white/10" style={{ background: '#0f3460' }}>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -141,14 +158,13 @@ export default function ServicesLayout({ services, children }: ServicesLayoutPro
             />
           </button>
 
-          {/* Dropdown list */}
           {mobileOpen && (
             <div
               className="border-t border-white/10 max-h-[62vh] overflow-y-auto"
               style={{ background: '#0a1f3d' }}
             >
               {services.map((s) => {
-                const Icon = s.icon;
+                const Icon = SERVICE_ICONS[s.id] ?? Activity;
                 const isActive = activeId === s.id;
                 return (
                   <button

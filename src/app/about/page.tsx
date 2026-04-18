@@ -1,5 +1,23 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn about Alpha Capital D Integrated Services — 15+ years of EPIC engineering excellence in Nigeria's oil & gas sector. Our mission, vision, values, industries served and commitment to safe project delivery.",
+  keywords:
+    "about Alpha Capital D, EPIC company Nigeria, oil gas engineering company Port Harcourt, energy sector Nigeria, pipeline company Rivers State",
+  alternates: {
+    canonical: "https://alphacapitald.com/about",
+  },
+  openGraph: {
+    title: "About Us | Alpha Capital D",
+    description:
+      "15+ years of EPIC engineering excellence in Nigeria. Learn about our mission, values, team and commitment to safe, on-time project delivery.",
+    url: "https://alphacapitald.com/about",
+  },
+};
 import {
   Target,
   Eye,
